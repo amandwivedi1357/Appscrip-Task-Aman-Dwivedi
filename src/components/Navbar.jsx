@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import "@/styles/Navbar.css"
 import Image from "next/image"
 
 export default function Navbar() {

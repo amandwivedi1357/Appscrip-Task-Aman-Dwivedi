@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "@/styles/productlisting.css"
+
 import ProductGrid from './ProductGrid';
 import Image from 'next/image';
 import FilterBar from './FilterBar';

@@ -1,5 +1,4 @@
 import React from 'react';
-import '@/styles/productcard.css';
 import Image from 'next/image';
 
 const ProductCard = ({ product }) => {

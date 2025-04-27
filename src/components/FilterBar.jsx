@@ -1,5 +1,4 @@
 import React from 'react';
-import "@/styles/FilterBar.css"
 const FilterBar = () => {
   return (
     <div className="filter-bar">

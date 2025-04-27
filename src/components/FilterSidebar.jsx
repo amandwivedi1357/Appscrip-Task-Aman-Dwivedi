@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '@/styles/FilterSidebar.css';
+
 import Image from 'next/image';
 
 const FilterSidebar = ({ products, onCategoryFilter, selectedCategory }) => {

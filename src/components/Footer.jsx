@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import "@/styles/Footer.css"
 
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false)

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchProducts } from '@/utils/api';
 import ProductCard from './ProductCard';
 import FilterSidebar from './FilterSidebar';
-import '@/styles/productgrid.css';
+
 
 const ProductGrid = ({ isFilterVisible, onProductCountUpdate }) => {
   const [products, setProducts] = useState([]);
