@@ -1,0 +1,245 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  /* Announcement bar */
+  .announcement-bar {
+    background-color: #000;
+    color: #EB4C6B;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .announcement-item{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Mobile-specific styling for announcement bar */
+  @media (max-width: 768px) {
+    .announcement-bar {
+      display: none;
+    }
+  }
+  
+  /* Header and Navbar */
+  .header {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fff;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+  }
+  
+  /* Logo */
+  .logo-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+  .logo-container >div{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+  }
+  .logo-icon {
+    margin-bottom: 5px;
+  }
+  
+  .square-logo {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inner-square {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+  }
+  
+  .logo-text {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+  }
+  
+  /* Navigation Icons */
+  .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .nav-icons svg {
+    stroke: black;
+  }
+  
+  .language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  .nav-links ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .nav-links a {
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s;
+    color: #000;
+
+  }
+  
+  .nav-links a:hover {
+    color: #666;
+  }
+  
+  /* Mobile Menu Toggle */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    padding: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      width: 25px;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 100%;
+      background-color: black;
+      transition: all 0.3s ease;
+    }
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+  }
+  
+  .mobile-menu li {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .mobile-menu a {
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 767px) {
+    .navbar-container {
+      padding: 10px 0;
+    }
+  
+    .logo-container {
+      flex-direction: row;
+      gap: 10px;
+    }
+  
+    .logo-icon {
+      margin-bottom: 0;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+    }
+  }

@@ -1,0 +1,134 @@
+.product-listing-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+.product-listing-container {
+  margin: 30px 96px;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 15px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.left-options, .right-options {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.left-options p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  cursor: pointer;
+}
+
+.left-options p:first-child {
+  font-weight: 600;
+  color: #000;
+}
+
+.left-options p:last-child {
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.left-options p:last-child:hover {
+  color: #000;
+}
+
+.right-options {
+  padding: 16px;
+  position: relative;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.right-options::after {
+  content: '▼';
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.right-options:hover {
+  color: #000;
+}
+
+.recommendation-dropdown {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.recommendation-dropdown .dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.recommendation-dropdown .dropdown-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.recommendation-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 250px;
+  background-color: white;
+
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+  margin-top: 10px;
+}
+
+.recommendation-option {
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recommendation-option:hover {
+  background-color: #f0f0f0;
+}
+
+.mobile-filter{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .product-listing-container {
+    margin:0;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .left-options, .right-options {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .options {
+    display: none;
+  }
+
+  .product-listing-container .sidebar {
+    display: none;
+  }
+  .mobile-filter{
+    display: block;
+  }
+}

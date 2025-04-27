@@ -1,0 +1,44 @@
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    background: #fff;
+
+    height: 48px;
+    box-sizing: border-box;
+  }
+  
+  .filter-bar__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #231F20;
+    letter-spacing: 0.03em;
+    background: transparent;
+  }
+  
+  .filter-bar__divider {
+    width: 1px;
+    height: 28px;
+    background: #E5E5E5;
+    margin: 0 8px;
+  }
+  
+  .filter-bar__item--right {
+    justify-content: flex-end;
+  }
+  
+  .filter-bar__chevron {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+  }
+  
+  
