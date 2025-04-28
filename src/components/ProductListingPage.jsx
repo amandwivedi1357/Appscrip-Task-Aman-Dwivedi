@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-
 import ProductGrid from './ProductGrid';
 import Image from 'next/image';
 import FilterBar from './FilterBar';
 
-const ProductListingPage = () => {
+const ProductListingPage = ({ initialProducts = [] }) => {
+  const [productCount, setProductCount] = useState(initialProducts.length);
   const [isFilterVisible, setIsFilterVisible] = useState(true);
-  const [productCount, setProductCount] = useState(0);
   const [isRecommendationOpen, setIsRecommendationOpen] = useState(false);
   const [selectedRecommendation, setSelectedRecommendation] = useState('Recommended');
 
@@ -51,7 +50,6 @@ const ProductListingPage = () => {
               onClick={toggleRecommendationDropdown}
             >
               {selectedRecommendation}
-              
             </div>
             {isRecommendationOpen && (
               <div className='recommendation-options'>
@@ -73,6 +71,7 @@ const ProductListingPage = () => {
         <FilterBar/>
         </div>
         <ProductGrid 
+          initialProducts={initialProducts}
           isFilterVisible={isFilterVisible} 
           onProductCountUpdate={handleProductCountUpdate}
         />

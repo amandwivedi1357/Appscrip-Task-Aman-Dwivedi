@@ -60,8 +60,7 @@ const Footer = () => {
     followUs: [
       'Instagram',
       'Facebook',
-      'Twitter',
-      'LinkedIn'
+      
     ]
   };
 
@@ -93,7 +92,11 @@ const Footer = () => {
         <div className="footer-divider" />
         <div className="footer-links-container">
           {Object.entries(footerSections).map(([sectionKey, links]) => (
-            <div key={sectionKey} className="footer-section">
+            <div 
+              key={sectionKey} 
+              className="footer-section"
+              data-section={sectionKey}
+            >
               <div 
                 className="footer-section-title" 
                 onClick={() => toggleDropdown(sectionKey)}
@@ -105,25 +108,40 @@ const Footer = () => {
               </div>
               <div 
                 className={`footer-section-links ${openDropdown === sectionKey ? 'open' : ''}`}
+                data-section={sectionKey}
               >
-                {links.map((link, index) => (
+                {sectionKey !== 'followUs' && links.map((link, index) => (
                   <a key={index} href="#">{link}</a>
                 ))}
+                {sectionKey === 'followUs' && (
+                  <div className="footer-social-icons">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="24" height="24" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/4494/4494475.png" alt="Facebook" width="24" height="24" style={{ marginLeft: 8 }} />
+                  </div>
+                )}
               </div>
+              
             </div>
           ))}
+          {isMobile && (
+                      <div className="footer-accepts">
+                        <div className="footer-section-title">METTA MUSE ACCEPTS</div>
+                        <div className="footer-payment-icons">
+                          <img src="/gpay.svg" alt="Google Pay" width="40" height="24" />
+                          <img src="/mastercard.svg" alt="Mastercard" width="40" height="24" style={{ marginLeft: 4 }} />
+                          <img src="/paypal.svg" alt="Paypal" width="40" height="24" style={{ marginLeft: 4 }} />
+                          <img src="/amex.svg" alt="American Express" width="40" height="24" style={{ marginLeft: 4 }} />
+                          <img src="/applepay.svg" alt="Apple Pay" width="40" height="24" style={{ marginLeft: 4 }} />
+                          <img src="/pay.svg" alt="Pay" width="40" height="24" style={{ marginLeft: 4 }} />
+                        </div>
+                      </div>
+                    )}
         </div>
         <div className="footer-row footer-links-row">
           <div className="footer-links-col footer-follow">
-            <div className="footer-links-header">FOLLOW US</div>
-            <div className="footer-social-icons">
-              {/* Social icons would go here. Placeholder: */}
-              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="24" height="24" />
-              <img src="https://cdn-icons-png.flaticon.com/512/4494/4494475.png" alt="Facebook" width="24" height="24" style={{ marginLeft: 8 }} />
-            </div>
             <div className="footer-accepts">
               <div className="footer-links-header">metta muse ACCEPTS</div>
-              <div className="footer-payment-icons">
+              <div className="footer-payment-icons" style={{paddingLeft: "16px"}}>
                 <img src="/gpay.svg" alt="Google Pay" width="40" height="24" />
                 <img src="/mastercard.svg" alt="Mastercard" width="40" height="24" style={{ marginLeft: 4 }} />
                 <img src="/paypal.svg" alt="Paypal" width="40" height="24" style={{ marginLeft: 4 }} />
