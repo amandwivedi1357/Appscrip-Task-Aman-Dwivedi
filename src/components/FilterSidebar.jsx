@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
-import "../styles/FilterSidebar.css"
 
 const FilterSidebar = () => {
   const [openCategory, setOpenCategory] = useState("IDEAL FOR")
