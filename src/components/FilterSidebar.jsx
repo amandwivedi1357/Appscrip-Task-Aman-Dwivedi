@@ -1,77 +1,115 @@
-import React, { useState } from 'react';
+"use client"
 
-import Image from 'next/image';
+import { useState } from "react"
+import { ChevronDown } from "lucide-react"
+import "../styles/FilterSidebar.css"
 
-const FilterSidebar = ({ products, onCategoryFilter, selectedCategory }) => {
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [checkedItems, setCheckedItems] = useState({});
+const FilterSidebar = () => {
+  const [openCategory, setOpenCategory] = useState("IDEAL FOR")
+  const [selectedFilters, setSelectedFilters] = useState({});
 
-  const categories = [...new Set(products.map(p => p.category))];
+  const toggleCategory = (category) => {
+    setOpenCategory(openCategory === category ? "" : category)
+  }
 
-  const categoryDropdowns = {
-    'CLOTHING': {
-      items: ['Men', 'Women', 'Baby & Kids']
-    }
-  };
+  const handleCheckboxChange = (categoryName, option) => {
+    setSelectedFilters(prev => {
+      const updatedCategoryFilters = prev[categoryName] ? [...prev[categoryName]] : [];
+      const optionIndex = updatedCategoryFilters.indexOf(option);
 
-  const toggleDropdown = (category) => {
-    setOpenDropdown(openDropdown === category ? null : category);
-  };
-
-  const handleCheckboxChange = (category, item) => {
-    setCheckedItems(prev => ({
-      ...prev,
-      [category]: {
-        ...(prev[category] || {}),
-        [item]: !(prev[category]?.[item] || false)
+      if (optionIndex > -1) {
+        updatedCategoryFilters.splice(optionIndex, 1);
+      } else {
+        updatedCategoryFilters.push(option);
       }
+      return { ...prev, [categoryName]: updatedCategoryFilters };
+    });
+  };
+
+  const handleUnselectAll = (categoryName) => {
+    setSelectedFilters(prev => ({
+      ...prev,
+      [categoryName]: []
     }));
   };
 
+  const categories = [
+    {
+      name: "IDEAL FOR",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "OCCASION",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "WORK",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "FABRIC",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "SEGMENT",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "SUITABLE FOR",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "RAW MATERIALS",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+    {
+      name: "PATTERN",
+      options: ["Men", "Women", "Baby & Kids"],
+    },
+  ]
+
   return (
     <div className="filter-sidebar">
-      <div style={{display: 'flex', alignItems: 'center'}}>
-        <input type="checkbox" className='checkbox' />
-        <h4>CUSTOMIZABLE</h4>
+      {/* Customizable checkbox */}
+      <div className="customizable-option">
+        <input type="checkbox" className="checkbox" />
+        <span className="label">CUSTOMIZABLE</span>
       </div>
-      <div className="category-filters">
-        {categories.map(category => (
-          <div 
-            key={category} 
-            className={`category-filter ${selectedCategory === category ? 'active' : ''}`}
-            onClick={() => onCategoryFilter(category)}
-          >
-            <div className="category-header">
-              <span>{category.toUpperCase()}</span>
-              {categoryDropdowns[category.toUpperCase()] && (
-                <div 
-                  className="dropdown-toggle" 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleDropdown(category);
-                  }}
-                >
-                  <Image 
-                    src="/down-arrow.svg" 
-                    alt="Dropdown" 
-                    width={15} 
-                    height={15} 
-                    className={`dropdown-icon ${openDropdown === category ? 'rotated' : ''}`}
-                  />
-                </div>
-              )}
+
+      {/* Categories */}
+      <div className="categories">
+        {categories.map((category) => (
+          <div key={category.name} className="category">
+            <div className="category-header" onClick={() => toggleCategory(category.name)}>
+              <div className="category-title">
+                <span>{category.name}</span>
+              </div>
+              <div className="category-toggle">
+                <span className="all-label">All</span>
+                <ChevronDown className={`chevron ${openCategory === category.name ? "rotated" : ""}`} />
+              </div>
             </div>
-            {openDropdown === category && categoryDropdowns[category.toUpperCase()] && (
+
+            {/* Dropdown content */}
+            {openCategory === category.name && (
               <div className="dropdown-content">
-                {categoryDropdowns[category.toUpperCase()].items.map(item => (
-                  <div key={item} className="dropdown-item">
-                    <input 
-                      type="checkbox" 
-                      id={`${category}-${item}`}
-                      checked={checkedItems[category]?.[item] || false}
-                      onChange={() => handleCheckboxChange(category, item)}
+                {/* Unselect all option */}
+                <div className="unselect-option">
+                  <button className="unselect-button" onClick={() => handleUnselectAll(category.name)}>Unselect all</button>
+                </div>
+
+                {category.options.map((option) => (
+                  <div key={option} className="option">
+                    <input
+                      type="checkbox"
+                      id={`${category.name}-${option}`}
+                      className="checkbox"
+                      checked={selectedFilters[category.name]?.includes(option) || false}
+                      onChange={() => handleCheckboxChange(category.name, option)}
                     />
-                    <label htmlFor={`${category}-${item}`}>{item}</label>
+                    <label htmlFor={`${category.name}-${option}`} className="option-label">
+                      {option}
+                    </label>
                   </div>
                 ))}
               </div>
@@ -80,7 +118,7 @@ const FilterSidebar = ({ products, onCategoryFilter, selectedCategory }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FilterSidebar;
+export default FilterSidebar
