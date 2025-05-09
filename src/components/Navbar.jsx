@@ -54,7 +54,7 @@ export default function Navbar() {
               </button>
             )}
             <div className="">
-              <Image src="/logo.svg" alt="Header Logo" width={35} height={35} />
+              <Image src="/Logo.svg" alt="Header Logo" width={35} height={35} />
             </div>
             <div className="logo-text">
               Logo
